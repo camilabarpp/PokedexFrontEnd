@@ -1,0 +1,58 @@
+:host {
+  flex-wrap: wrap;
+
+  .pokemon {
+    background: var(--branco);
+    border-radius: 10px;
+    padding: 20px;
+    max-height: 300px;
+    margin: 10px 12px;
+
+    &-status {
+      h2 {
+        font-size: 18px;
+        font-style: italic;
+        font-weight: 700;
+        text-transform: capitalize;
+        margin-bottom: 10px;
+      }
+
+      span {
+        font-size: small;
+        font-weight: 700;
+        text-transform: lowercase;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      li {
+        background-color: var(--secondary-color);
+        font-size: 10px;
+        border-radius: 32px;
+        width: 80px;
+        height: 36px;
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &-image {
+      background: url(../../../assets/background/Bolinhas.svg) no-repeat;
+      padding: 26px;
+      max-width: 110px;
+      max-height: 90px;
+
+      img {
+        width: 90px;
+        height: 90px;
+      }
+    }
+  }
+
+  .search-section {
+    margin: 12px;
+  }
+}

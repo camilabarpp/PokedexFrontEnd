@@ -1,0 +1,75 @@
+<div class="search-section" fxFlex="100%">
+  <app-search (emmitSearch)="getSearch($event)"></app-search>
+</div>
+<ng-container class="container">
+  <ng-template ngFor let-pokemon [ngForOf]="getAllPokemons">
+    <div
+      class="pokemon"
+      fxFlex.xl="47%"
+      fxFlex.lg="47%"
+      fxFlex.md="45%"
+      fxFlex.sm="100%"
+      fxFlex.xs="100%"
+    >
+      <a
+        [routerLink]="['details', pokemon.results.id]"
+        fxLayout.sm="row"
+        fxLayoutAlign="space-between"
+        *ngIf="pokemon.results"
+      >
+        <section class="pokemon-status" fxLayout="column">
+          <h2>
+            {{ pokemon.name | uppercase }}
+          </h2>
+
+          <div fxLayout="row" fxLayoutGap="20px">
+            <div fxLayout="column">
+              <span>Powers</span>
+              <ul *ngFor="let value of pokemon.results.types">
+                <li>
+                  {{ value.type.name }}
+                </li>
+              </ul>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="20px">
+              <div fxLayout="column">
+                <span>Habilities</span>
+                <ul *ngFor="let value of pokemon.results.abilities">
+                  <li>
+                    {{ value.ability.name }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- <section
+          class="pokemon-status"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <ul *ngFor="let value of pokemon.results.abilities">
+            <li>
+              {{ value.ability.name }}
+            </li>
+          </ul>
+        </section> -->
+
+        <section class="pokemon-image" fxLayoutAlign="start center">
+          <img
+            [src]="pokemon.results.sprites.other.dream_world.front_default"
+            [alt]="pokemon.name"
+          />
+        </section>
+      </a>
+    </div>
+  </ng-template>
+</ng-container>
+<img
+  src="assets/error.svg"
+  alt="Deu erro na mostragem do pokemon"
+  width="100%"
+  *ngIf="apiError"
+/>
